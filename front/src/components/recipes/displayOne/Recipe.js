@@ -33,10 +33,18 @@ export default function Recipe() {
 
   return (
     <div className="bg-white p-3 mt-3">
-      <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700 h-64 mt-3 bg-white">
-        <div className="photo-container">Photo</div>
+      <div className="flex flex-col relative shadow appearance-none border rounded py-2 px-3 text-gray-700 h-64 mt-3 bg-white z-0">
+        {recipe.picture ? (
+          <img className="object-cover h-full w-full" src={recipe.picture} />
+        ) : (
+          <>
+            <div className="flex w-full h-full justify-center items-center font-thin">
+              Pas de photo
+            </div>
+          </>
+        )}
       </div>
-      <div className="flex flex-col shadow appearance-none border rounded text-gray-700 bg-white -mt-12 ml-64 mr-64">
+      <div className="flex flex-col relative shadow appearance-none border rounded text-gray-700 bg-white -mt-12 ml-64 mr-64 z-10">
         <div className="mt-3 mb-3 text-green-500 text-xl font-bold font-sans text-center uppercase">
           {recipe.title}
         </div>

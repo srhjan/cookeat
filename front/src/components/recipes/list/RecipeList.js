@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { findAllRecipes } from "../../../store/recipes/actions";
 import "./Design.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserFriends, faClock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserFriends,
+  faClock,
+  faBlender,
+} from "@fortawesome/free-solid-svg-icons";
 import whisk from "../../../assets/beater.svg";
 
 export default function RecipeList() {
@@ -20,16 +24,28 @@ export default function RecipeList() {
 
   return (
     <div>
+      <div>
+        <div></div>
+      </div>
       <div className="flex flex-row text-lg font-thin">
         {recipes.map((recipe) => {
           return (
             <div key={recipe.recipe_id}>
               <Link to={`/recipe/${recipe.recipe_id}`}>
-                <div className="recipe shadow border rounded ml-5 h-48 py-2 px-3 text-gray-700 mt-6 bg-white">
-                  <div className="photorecipe flex justify-center items-center">
-                    Photo
-                  </div>
-                  <div className="line border "></div>
+                <div className="recipe transition duration-700 ease-in-out transform hover:-translate-y-1 hover:scale-110 shadow border rounded ml-5 h-48 py-2 px-3 text-gray-700 mt-6 bg-white">
+                  {recipe.picture ? (
+                    <img
+                      className="photorecipe flex justify-center items-center object-cover h-full w-full"
+                      src={recipe.picture}
+                    />
+                  ) : (
+                    <>
+                      <div className="photorecipe flex justify-center items-center">
+                        Pas de photo
+                      </div>
+                      <div className="line border "></div>
+                    </>
+                  )}
                   <div className="infosrecipe ">
                     <div className="flex justify-center mt-2">
                       {recipe.title}
@@ -39,19 +55,23 @@ export default function RecipeList() {
                         <FontAwesomeIcon
                           icon={faUserFriends}
                           size="sm"
-                          color="#feb2b2"
+                          color="#22C55E"
                         />
                         <span className="ml-4">{recipe.servings}</span>
                       </div>
-                      <div className="flex">
-                        <img src={whisk} className="w-4"></img>
+                      <div>
+                        <FontAwesomeIcon
+                          icon={faBlender}
+                          size="sm"
+                          color="#22C55E"
+                        />
                         <span className="ml-4">{recipe.prep_time}</span>
                       </div>
                       <div>
                         <FontAwesomeIcon
                           icon={faClock}
                           size="sm"
-                          color="#feb2b2"
+                          color="#22C55E"
                         />
                         <span className="ml-3"> {recipe.cook_time}</span>
                       </div>

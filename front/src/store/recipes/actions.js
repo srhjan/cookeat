@@ -41,7 +41,7 @@ export function createNewRecipe(recipe) {
 export function findOneRecipe(recipe_id) {
   return function (dispatch) {
     axios.get(`http://localhost:3001/recipes/${recipe_id}`).then((res) => {
-      const recipe = res.data[0];
+      const recipe = res.data;
       dispatch(addRecipe(recipe));
     });
   };

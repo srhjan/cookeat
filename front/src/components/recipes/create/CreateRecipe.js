@@ -9,7 +9,7 @@ import Ingredients from "./Ingredients";
 import { Redirect } from "react-router-dom";
 import Title from "./Title";
 import RecipeInput from "./RecipeInput";
-import Photo from "./Photo";
+import Picture from "./Picture";
 import Methods from "./Methods";
 
 export default function CreateRecipe({ recipe }) {
@@ -20,6 +20,7 @@ export default function CreateRecipe({ recipe }) {
       servings: "",
       prep_time: "",
       cook_time: "",
+      picture: "",
       ingredients: [],
       methods: [],
     }
@@ -36,7 +37,15 @@ export default function CreateRecipe({ recipe }) {
       <div className="bg-white p-3 mt-3">
         <div className="flex flex-row w-full mt-3">
           <div className="photo-container">
-            <Photo></Photo>
+            <Picture
+              picture={recipeToCreate.picture}
+              onChange={(newPicture) =>
+                setRecipeToCreate({
+                  ...recipeToCreate,
+                  picture: newPicture,
+                })
+              }
+            ></Picture>
           </div>
           <div className="w-full">
             <Title
@@ -51,7 +60,7 @@ export default function CreateRecipe({ recipe }) {
           </div>
         </div>
         <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700 mt-3 bg-white">
-          <div className="mt-2 mb-4 text-teal-400 text-xl font-bold font-sans text-center uppercase p-2">
+          <div className="mt-2 mb-4 text-green-500 text-xl font-bold font-sans text-center uppercase p-2">
             Informations
           </div>
           <div className="infos-recipe flex flex-row">
@@ -97,7 +106,7 @@ export default function CreateRecipe({ recipe }) {
           </div>
         </div>
         <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
-          <div className="mt-2 mb-4 text-teal-400 font-bold font-sans text-xl text-center uppercase p-2">
+          <div className="mt-2 mb-4 text-green-500 font-bold font-sans text-xl text-center uppercase p-2">
             ingrédients
           </div>
           <Ingredients
@@ -111,7 +120,7 @@ export default function CreateRecipe({ recipe }) {
           ></Ingredients>
         </div>
         <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
-          <div className="mt-2 mb-4 text-teal-400 font-bold font-sans text-xl text-center uppercase p-2">
+          <div className="mt-2 mb-4 text-green-500 font-bold font-sans text-xl text-center uppercase p-2">
             étapes à suivre
           </div>
           <Methods
@@ -126,12 +135,12 @@ export default function CreateRecipe({ recipe }) {
         </div>
         <div className="flex justify-center">
           <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold mt-5 py-2 px-4 rounded inline-flex items-center"
+            className="bg-orange-400 hover:bg-orange-500 text-white font-bold mt-5 py-2 px-4 rounded inline-flex items-center"
             onClick={() => {
               if (isNew) {
                 console.log("recipeToCreate: ", recipeToCreate);
                 dispatch(createNewRecipe(recipeToCreate));
-                setRecipeCreated(true);
+                return setRecipeCreated(true);
               }
               console.log("recipeToCreate: ", recipeToCreate);
               dispatch(updateOneRecipe(recipeToCreate));
