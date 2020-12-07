@@ -37,7 +37,7 @@ export default function Recipe() {
         <div className="photo-container">Photo</div>
       </div>
       <div className="flex flex-col shadow appearance-none border rounded text-gray-700 bg-white -mt-12 ml-64 mr-64">
-        <div className="mt-3 mb-3 text-teal-400 text-xl font-bold font-sans text-center uppercase">
+        <div className="mt-3 mb-3 text-green-500 text-xl font-bold font-sans text-center uppercase">
           {recipe.title}
         </div>
         <div>

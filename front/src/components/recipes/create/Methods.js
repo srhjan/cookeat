@@ -14,10 +14,10 @@ export default function Methods({ methods, setMethods }) {
               key={step.method_id}
               className="flex flex-row text-lg font-thin ml-24 mr-24 "
             >
-              <div className="rounded-full bg-red-300 text-white font-semibold h-8 w-8 flex items-center justify-center mr-3 p-3 mb-4">{`${
+              <div className="rounded-full bg-orange-400 text-white font-semibold h-8 w-8 flex items-center justify-center mr-3 p-3 mb-4">{`${
                 i + 1
               }`}</div>
-              <input
+              <textarea
                 className="break-all w-full mb-4 font-thin"
                 value={step.content}
                 onChange={(e) =>
@@ -30,7 +30,7 @@ export default function Methods({ methods, setMethods }) {
                     })
                   )
                 }
-              ></input>
+              ></textarea>
             </div>
           );
         })}

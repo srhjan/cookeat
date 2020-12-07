@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Design.css";
 import Select from "react-select";
 import { findAllUnits } from "../../../store/recipes/actions";
-import { find, noop } from "lodash";
+import { find } from "lodash";
 
 function Ingredient({ ingredient, units, onCreate, onChange, onRemove }) {
   const options = units.map((unit) => {
@@ -22,7 +22,7 @@ function Ingredient({ ingredient, units, onCreate, onChange, onRemove }) {
         <div className="text-center font-thin text-lg">Quantité</div>
         <input
           placeholder="Ex : 500"
-          className="w-full border-b-2 border-gray-400 font-thin py-2 px-3 mb-3 focus:border-orange-400 focus:placeholder-orange-400 text-lg font-sans"
+          className="w-full border-b-2 border-gray-300 font-thin py-2 px-3 mb-3 focus:border-orange-400 focus:placeholder-orange-400 text-lg font-sans"
           value={ingredient.quantity}
           onChange={(e) => {
             onChange({ ...ingredient, quantity: e.target.value });
@@ -34,6 +34,7 @@ function Ingredient({ ingredient, units, onCreate, onChange, onRemove }) {
         <Select
           className="select mt-2 font-thin text-md"
           options={options}
+          placeholder={"Sélectionnez"}
           value={ingredientUnit}
           onChange={(newValue, actionMeta) => {
             if (actionMeta.action === "select-option") {
@@ -49,13 +50,19 @@ function Ingredient({ ingredient, units, onCreate, onChange, onRemove }) {
               neutral90: "#feebc8",
             },
           })}
+          styles={{
+            option: (provided, state) => ({
+              ...provided,
+              minHeight: "40px",
+            }),
+          }}
         />
       </div>
       <div>
         <div className="text-center font-thin text-lg">Ingrédient</div>
         <input
           placeholder="Ex : Farine"
-          className="w-full border-b-2 border-gray-400 font-thin py-2 px-3 mb-3 focus:border-orange-400 focus:placeholder-orange-400 text-lg font-sans"
+          className="w-full border-b-2 border-gray-300 font-thin py-2 px-3 mb-3 focus:border-orange-400 focus:placeholder-orange-400 text-lg font-sans"
           value={ingredient.name}
           onChange={(e) => {
             onChange({ ...ingredient, name: e.target.value });
@@ -65,7 +72,7 @@ function Ingredient({ ingredient, units, onCreate, onChange, onRemove }) {
       {onCreate && (
         <button
           className="addButton mt-2 hover:border-orange-400 hover:text-orange-400 border border-dashed text-gray-800 font-thin py-2 px-4 rounded inline-flex items-center"
-          onClick={onCreate}
+          onClick={() => onCreate(ingredient)}
         >
           +
         </button>
@@ -104,7 +111,6 @@ export default function Ingredients({ ingredients, setIngredients }) {
         {ingredients.map((ingredient, i) => {
           return (
             <Ingredient
-              key={ingredient.ingredient_id}
               className="infos-recipe flex flex-row"
               ingredient={ingredient}
               units={units}
@@ -126,7 +132,7 @@ export default function Ingredients({ ingredients, setIngredients }) {
           ingredient={newIngredient}
           units={units}
           onCreate={(ingredientToCreate) => {
-            setIngredients([...ingredients, newIngredient]);
+            setIngredients([...ingredients, ingredientToCreate]);
             setNewIngredient({ name: "", quantity: "", unit: "" });
           }}
           onChange={(ingredient) => {
