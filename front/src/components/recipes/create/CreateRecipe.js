@@ -34,9 +34,9 @@ export default function CreateRecipe({ recipe }) {
 
   return (
     <div>
-      <div className="bg-white p-3 mt-3">
-        <div className="flex flex-row w-full mt-3">
-          <div className="photo-container">
+      <div className="bg-white">
+        <div className="flex flex-col w-full">
+          <div>
             <Picture
               picture={recipeToCreate.picture}
               onChange={(newPicture) =>
@@ -47,7 +47,7 @@ export default function CreateRecipe({ recipe }) {
               }
             ></Picture>
           </div>
-          <div className="w-full">
+          <div className="flex flex-col relative shadow  border rounded text-gray-700 bg-white -mt-12 ml-64 mr-64 z-10">
             <Title
               title={recipeToCreate.title}
               onChange={(newTitle) =>
@@ -59,7 +59,7 @@ export default function CreateRecipe({ recipe }) {
             ></Title>
           </div>
         </div>
-        <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700 mt-3 bg-white">
+        <div className="flex flex-col shadow mx-4 border rounded py-2 px-3 text-gray-700 mt-3 bg-white">
           <div className="mt-2 mb-4 text-green-500 text-xl font-bold font-sans text-center uppercase p-2">
             Informations
           </div>
@@ -105,7 +105,7 @@ export default function CreateRecipe({ recipe }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
+        <div className="flex flex-col shadow mx-4 border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
           <div className="mt-2 mb-4 text-green-500 font-bold font-sans text-xl text-center uppercase p-2">
             ingrédients
           </div>
@@ -119,7 +119,7 @@ export default function CreateRecipe({ recipe }) {
             }
           ></Ingredients>
         </div>
-        <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
+        <div className="flex flex-col shadow mx-4 border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
           <div className="mt-2 mb-4 text-green-500 font-bold font-sans text-xl text-center uppercase p-2">
             étapes à suivre
           </div>

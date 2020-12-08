@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Ingredients({ recipe }) {
   return (
-    <div className="flex flex-col shadow appearance-none border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
+    <div className="flex flex-col shadow mx-4 border rounded py-2 px-3 text-gray-700  mt-3 bg-white">
       <div className="mt-2 mb-4 text-green-500 font-bold font-sans text-xl text-center uppercase p-2">
         ingrédients
       </div>

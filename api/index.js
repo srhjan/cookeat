@@ -7,6 +7,9 @@ const port = 3001;
 // Cors permet d'accéder à mon API à l'extérieur. C'est une sécurité.
 const cors = require("cors");
 
+//Limiter la taille de la requête (1000000 bytes = 1000 ko)
+app.use(express.json({ limit: 1000000 }));
+
 app.use(cors());
 app.use(bodyParser.json());
 

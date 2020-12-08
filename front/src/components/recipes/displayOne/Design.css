@@ -12,6 +12,12 @@ body {
   display: none;
 }
 
+/* Recipe picture */
+
+.picture {
+  height: 400px;
+}
+
 /* Component ingredients */
 
 .displayText {

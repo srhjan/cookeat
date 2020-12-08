@@ -5,7 +5,6 @@ import {
   faClock,
   faBlender,
 } from "@fortawesome/free-solid-svg-icons";
-import whisk from "../../../assets/beater.svg";
 import "./Design.css";
 
 export default function Title({ recipe }) {
