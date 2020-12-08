@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { findAllRecipes } from "../../../store/recipes/actions";
 import "./Design.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserFriends,
-  faClock,
-  faBlender,
-} from "@fortawesome/free-solid-svg-icons";
-import whisk from "../../../assets/beater.svg";
+import RecipeInput from "./RecipeInput";
+import SearchBar from "./SearchBar";
 
 export default function RecipeList() {
+  const [searchTitle, setSearchTitle] = useState("");
   // Selector va permettre de sélectionner un bout du state.
   const recipes = useSelector((state) => state.recipes.list);
+  const filteredRecipes = recipes.filter((recipe) => {
+    return recipe.title.toLowerCase().includes(searchTitle.toLowerCase());
+  });
   const dispatch = useDispatch();
   // useEffect permet de ne pas exécuter la fonction à chaque rendu d'un component.
   // A partir du moment où le tableau est inchangé, il ne va pas rééxécuter la fonction dans le UseEffect.
@@ -24,11 +23,17 @@ export default function RecipeList() {
 
   return (
     <div>
+      <div className="header shadow bg-orange-400 w-full h-28 items-center">
+        <SearchBar
+          recipeTitle={searchTitle}
+          onChange={(title) => setSearchTitle(title)}
+        ></SearchBar>
+      </div>
       <div>
         <div></div>
       </div>
       <div className="flex flex-row text-lg font-thin">
-        {recipes.map((recipe) => {
+        {filteredRecipes.map((recipe) => {
           return (
             <div key={recipe.recipe_id}>
               <Link to={`/recipe/${recipe.recipe_id}`}>
@@ -47,35 +52,7 @@ export default function RecipeList() {
                     </>
                   )}
                   <div className="infosrecipe ">
-                    <div className="flex justify-center mt-2">
-                      {recipe.title}
-                    </div>
-                    <div className="flex flex-row mt-2 justify-around">
-                      <div>
-                        <FontAwesomeIcon
-                          icon={faUserFriends}
-                          size="sm"
-                          color="#22C55E"
-                        />
-                        <span className="ml-4">{recipe.servings}</span>
-                      </div>
-                      <div>
-                        <FontAwesomeIcon
-                          icon={faBlender}
-                          size="sm"
-                          color="#22C55E"
-                        />
-                        <span className="ml-4">{recipe.prep_time}</span>
-                      </div>
-                      <div>
-                        <FontAwesomeIcon
-                          icon={faClock}
-                          size="sm"
-                          color="#22C55E"
-                        />
-                        <span className="ml-3"> {recipe.cook_time}</span>
-                      </div>
-                    </div>
+                    <RecipeInput recipe={recipe}></RecipeInput>
                   </div>
                 </div>
               </Link>
