@@ -138,11 +138,9 @@ export default function CreateRecipe({ recipe }) {
             className="bg-orange-400 hover:bg-orange-500 text-white font-bold mt-5 py-2 px-4 rounded inline-flex items-center"
             onClick={() => {
               if (isNew) {
-                console.log("recipeToCreate: ", recipeToCreate);
                 dispatch(createNewRecipe(recipeToCreate));
                 return setRecipeCreated(true);
               }
-              console.log("recipeToCreate: ", recipeToCreate);
               dispatch(updateOneRecipe(recipeToCreate));
               setRecipeCreated(true);
             }}

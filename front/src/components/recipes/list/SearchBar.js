@@ -3,16 +3,16 @@ import "../../../containers/page-wrapper/PageWrapper.css";
 
 export default function SearchBar({ recipeTitle, onChange }) {
   return (
-    <div className="p-6">
-      <div className="text-gray-600 m-3 w-1/3 relative">
+    <div className="">
+      <div className="text-gray-600 relative">
         <input
           type="search"
           placeholder="Rechercher une recette"
-          className=" bg-white h-10 px-5 pr-16 rounded-full text-sm focus:outline-none w-full"
+          className="h-12 px-5 pr-16 focus:outline-none w-full shadow-md rounded-lg"
           value={recipeTitle}
           onChange={(e) => onChange(e.target.value)}
         ></input>
-        <button className="absolute right-0 top-0 mt-2.5 mr-4">
+        <button className="absolute right-3 top-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

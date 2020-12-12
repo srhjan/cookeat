@@ -3,15 +3,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-.recipe {
-  width: 300px;
-}
-
-.photorecipe {
-  height: 60%;
-}
-
-.infosrecipe {
-  height: 40%;
-}

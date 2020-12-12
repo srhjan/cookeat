@@ -33,6 +33,7 @@ export function createNewRecipe(recipe) {
   return function (dispatch) {
     axios.post("http://localhost:3001/recipes", recipe).then((res) => {
       const createdRecipe = res.data;
+
       dispatch(addRecipe(createdRecipe));
     });
   };

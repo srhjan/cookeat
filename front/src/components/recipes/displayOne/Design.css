@@ -23,9 +23,3 @@ body {
 .displayText {
   margin: 0 0 5px 120px;
 }
-
-/* Component RecipeInput */
-
-.infos-recipe {
-  justify-content: space-evenly;
-}

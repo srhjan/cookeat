@@ -21,9 +21,11 @@ export default function RecipeList() {
     dispatch(findAllRecipes());
   }, []);
 
+  console.log("test", recipes);
+
   return (
     <div>
-      <div className="header shadow bg-orange-400 w-full h-28 items-center">
+      <div className="header my-3 mx-4 items-center">
         <SearchBar
           recipeTitle={searchTitle}
           onChange={(title) => setSearchTitle(title)}
@@ -37,21 +39,23 @@ export default function RecipeList() {
           return (
             <div key={recipe.recipe_id}>
               <Link to={`/recipe/${recipe.recipe_id}`}>
-                <div className="recipe transition duration-700 ease-in-out transform hover:-translate-y-1 hover:scale-110 shadow border rounded ml-5 h-48 py-2 px-3 text-gray-700 mt-6 bg-white">
-                  {recipe.picture ? (
-                    <img
-                      className="photorecipe flex justify-center items-center object-cover h-full w-full"
-                      src={recipe.picture}
-                    />
-                  ) : (
-                    <>
-                      <div className="photorecipe flex justify-center items-center">
-                        Pas de photo
-                      </div>
-                      <div className="line border "></div>
-                    </>
-                  )}
-                  <div className="infosrecipe ">
+                <div className="recipe transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-lg shadow rounded-lg ml-5 text-gray-700 mt-6 bg-white">
+                  <div className="h-40 w-72">
+                    {recipe.picture ? (
+                      <img
+                        className="photorecipe flex justify-center items-center object-cover h-full w-full rounded rounded-t-lg"
+                        src={recipe.picture}
+                      />
+                    ) : (
+                      <>
+                        <div className="photorecipe flex justify-center items-center">
+                          Pas de photo
+                        </div>
+                        <div className="line border "></div>
+                      </>
+                    )}
+                  </div>
+                  <div className="h-full">
                     <RecipeInput recipe={recipe}></RecipeInput>
                   </div>
                 </div>
