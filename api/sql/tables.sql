@@ -1,9 +1,9 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION "pgcrypto";
 
 -- tables
 
 CREATE TABLE recipes (
-  "recipe_id" uuid primary key NOT NULL DEFAULT uuid_generate_v4 (),
+  "recipe_id" uuid primary key NOT NULL DEFAULT gen_random_uuid(),
   "title" TEXT NOT NULL,
   "servings" INTEGER NOT NULL DEFAULT 1,
   "prep_time" INTEGER,
@@ -17,7 +17,7 @@ CREATE TABLE units(
 );
 
 CREATE TABLE ingredients(
-  "ingredient_id" uuid primary key NOT NULL DEFAULT uuid_generate_v4 (),
+  "ingredient_id" uuid primary key NOT NULL DEFAULT gen_random_uuid(),
   "name" TEXT NOT NULL,
   "unit" TEXT NOT NULL REFERENCES units(symbol),
   "quantity" TEXT NOT NULL,
@@ -25,9 +25,12 @@ CREATE TABLE ingredients(
 );
 
 CREATE TABLE methods(
-  "method_id" uuid primary key NOT NULL DEFAULT uuid_generate_v4 (),
+  "method_id" uuid primary key NOT NULL DEFAULT gen_random_uuid(),
   "content" TEXT NOT NULL,
-  "recipe_id" uuid NOT NULL REFERENCES recipes(recipe_id) ON DELETE CASCADE
+  "position" INTEGER NOT NULL,
+  "recipe_id" uuid NOT NULL REFERENCES recipes(recipe_id) ON DELETE CASCADE,
+  UNIQUE("recipe_id", "position")
+);
 );
 
 -- data
