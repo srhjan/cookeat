@@ -4,9 +4,8 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export default function UpdateButton() {
   return (
-    <button className="rounded shadow p-2 text-green-500">
+    <button className="p-2 text-gray-400 hover:text-orange-400">
       <FontAwesomeIcon icon={faEdit} size="1x" />
-      <span className="font-thin ml-2 text-black">Editer la recette</span>
     </button>
   );
 }

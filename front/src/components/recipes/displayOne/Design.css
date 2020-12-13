@@ -17,9 +17,3 @@ body {
 .picture {
   height: 400px;
 }
-
-/* Component ingredients */
-
-.displayText {
-  margin: 0 0 5px 120px;
-}

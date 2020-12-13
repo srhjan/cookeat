@@ -34,13 +34,13 @@ export default function RecipeList() {
       <div>
         <div></div>
       </div>
-      <div className="flex flex-row text-lg font-thin">
+      <div className="grid grid-cols-4 gap-x-4 gap-y-8 text-lg font-thin px-4">
         {filteredRecipes.map((recipe) => {
           return (
             <div key={recipe.recipe_id}>
               <Link to={`/recipe/${recipe.recipe_id}`}>
-                <div className="recipe transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-lg shadow rounded-lg ml-5 text-gray-700 mt-6 bg-white">
-                  <div className="h-40 w-72">
+                <div className="recipe transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:shadow-lg shadow rounded-lg text-gray-700 bg-white">
+                  <div className="h-28">
                     {recipe.picture ? (
                       <img
                         className="photorecipe flex justify-center items-center object-cover h-full w-full rounded rounded-t-lg"
@@ -48,10 +48,9 @@ export default function RecipeList() {
                       />
                     ) : (
                       <>
-                        <div className="photorecipe flex justify-center items-center">
+                        <div className="photorecipe flex justify-center items-center h-full bg-gray-50">
                           Pas de photo
                         </div>
-                        <div className="line border "></div>
                       </>
                     )}
                   </div>

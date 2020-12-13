@@ -33,7 +33,7 @@ export default function Recipe() {
 
   return (
     <div>
-      <div className="bg-white">
+      <div className="bg-gray-50">
         <div className="picture flex flex-col relative appearance-none border-none rounded text-gray-700 bg-white z-0">
           {recipe.picture ? (
             <img className="object-cover h-full w-full" src={recipe.picture} />
@@ -45,7 +45,7 @@ export default function Recipe() {
             </>
           )}
         </div>
-        <div className="flex flex-col relative shadow  border rounded text-gray-700 bg-white -mt-12 ml-64 mr-64 z-10">
+        <div className="flex flex-col relative border mb-6 rounded text-gray-700 bg-white -mt-12 max-w-lg mx-auto z-10">
           <div className="mt-3 mb-3 text-green-500 text-xl font-bold font-sans text-center uppercase">
             {recipe.title}
           </div>
@@ -53,22 +53,26 @@ export default function Recipe() {
             <RecipeInput recipe={recipe}></RecipeInput>
           </div>
         </div>
-        <div>
-          <Ingredients recipe={recipe}></Ingredients>
-        </div>
-        <div>
-          <Methods recipe={recipe}></Methods>
-        </div>
-        <div className="flex justify-around mt-4 ">
-          <Link to={`/recipe/${recipe.recipe_id}/edit`}>
-            <UpdateButton></UpdateButton>
-          </Link>
-          <RemoveButton
-            onClick={() => {
-              dispatch(removeOneRecipe(recipe.recipe_id));
-              setRecipeDeleted(true);
-            }}
-          ></RemoveButton>
+        <div class="max-w-4xl mx-auto text-left font-light border rounded-lg bg-white">
+          <div className="flex justify-end mt-4 mr-2">
+            <Link to={`/recipe/${recipe.recipe_id}/edit`}>
+              <UpdateButton></UpdateButton>
+            </Link>
+            <RemoveButton
+              onClick={() => {
+                dispatch(removeOneRecipe(recipe.recipe_id));
+                setRecipeDeleted(true);
+              }}
+            ></RemoveButton>
+          </div>
+          <div class="max-w-xl mx-auto">
+            <div>
+              <Ingredients recipe={recipe}></Ingredients>
+            </div>
+            <div>
+              <Methods recipe={recipe}></Methods>
+            </div>
+          </div>
         </div>
       </div>
     </div>

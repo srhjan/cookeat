@@ -9,18 +9,18 @@ import "./Design.css";
 
 export default function Title({ recipe }) {
   return (
-    <div className="infos-recipe flex flex-row mb-2 text-lg font-thin">
+    <div className="infos-recipe flex flex-row mb-2 text-lg font-light">
       <div>
         <FontAwesomeIcon icon={faUserFriends} size="sm" color="#FB923C" />
-        <span className="ml-4 ">{recipe.servings}</span>
+        <span className="ml-2">{recipe.servings}</span>
       </div>
       <div>
         <FontAwesomeIcon icon={faBlender} size="sm" color="#FB923C" />
-        <span className="ml-4">{recipe.prep_time}</span>
+        <span className="ml-2">{recipe.prep_time}</span>
       </div>
       <div>
         <FontAwesomeIcon icon={faClock} size="sm" color="#FB923C" />
-        <span className="ml-3"> {recipe.cook_time}</span>
+        <span className="ml-2"> {recipe.cook_time}</span>
       </div>
     </div>
   );
