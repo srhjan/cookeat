@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 import RecipeList from "./components/recipes/list/RecipeList";
 import CreateRecipe from "./components/recipes/create/CreateRecipe";
 import Recipe from "./components/recipes/displayOne/Recipe";
@@ -8,8 +11,6 @@ import DesignPage from "./containers/page-wrapper/PageWrapper";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import UserProfile from "./components/users/userProfile/UserProfile";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 // Le terme Guard signifie "remplir des conditions pour passer"
 function ConnectedStatusGuard({ shouldBeConnected, redirectTo, children }) {

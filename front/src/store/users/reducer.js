@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getUser } from "../../services/StoreService";
+
+const { user, token } = getUser();
 
 const usersSlice = createSlice({
   name: "users",
   initialState: {
     list: [],
     current: {
-      isConnected: false,
-      user: {},
-      token: "",
+      isConnected: Boolean(user),
+      user: user || {},
+      token: token || "",
     },
   },
   reducers: {

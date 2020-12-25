@@ -47,10 +47,7 @@ export default function Menu() {
         </Link>
       </div>
       <div className="text-left hover:bg-orange-400 mb-2 rounded-full hover:text-white w-56 text-xl">
-        <Link
-          to="/myaccount"
-          className="py-2 pl-6 pr-3 w-full flex items-center"
-        >
+        <Link to="/me" className="py-2 pl-6 pr-3 w-full flex items-center">
           <div className="w-5">
             <FontAwesomeIcon
               icon={faUser}
