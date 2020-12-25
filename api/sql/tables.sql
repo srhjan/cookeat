@@ -31,6 +31,15 @@ CREATE TABLE methods(
   "recipe_id" uuid NOT NULL REFERENCES recipes(recipe_id) ON DELETE CASCADE,
   UNIQUE("recipe_id", "position")
 );
+
+CREATE TABLE users(
+  "user_id" uuid primary key NOT NULL DEFAULT gen_random_uuid(),
+  "name" TEXT NOT NULL,
+  "surname" TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "password" TEXT NOT NULL,
+  "picture" TEXT,
+  UNIQUE("email")
 );
 
 -- data

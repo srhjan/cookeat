@@ -24,19 +24,20 @@ app.use(bodyParser.json());
 // https://github.com/expressjs/morgan
 app.use(morgan("dev"));
 
-require("./sql/queries")
-  .then((db) => {
-    // db.getRecipes est un handler/controleur, il va "attraper"/recevoir la requete
-    app.get("/recipes", db.getRecipes);
-    app.get("/recipes/:id", db.getRecipeById);
-    app.get("/units", db.getUnits);
-    app.post("/recipes", db.createRecipe);
-    app.put("/recipes/:id", db.updateRecipe);
-    app.delete("/recipes/:id", db.deleteRecipe);
-    app.listen(port, () => {
-      console.log(`App running on port ${port}.`);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
+require("./models").then(({ RecipeModel, UserModel }) => {
+  // db.getRecipes est un handler/controleur, il va "attraper"/recevoir la requete
+  app.get("/recipes", RecipeModel.getAll);
+  app.get("/recipes/:id", RecipeModel.getById);
+  app.get("/units", RecipeModel.getUnits);
+  app.post("/recipes", RecipeModel.create);
+  app.put("/recipes/:id", RecipeModel.update);
+  app.delete("/recipes/:id", RecipeModel.remove);
+
+  app.post("/auth/signup", UserModel.signUp);
+  app.post("/auth/login", UserModel.login);
+  // app.post("/auth/authorization", UserModel.verify);
+
+  app.listen(port, () => {
+    console.log(`App running on port ${port}.`);
   });
+});

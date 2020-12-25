@@ -60,6 +60,10 @@ select:focus {
   height: 18px;
 }
 
+.fa-user {
+  color: currentColor;
+}
+
 /* Header SearchBar */
 
 input::placeholder {
